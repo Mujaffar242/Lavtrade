@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">LavTrade</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">LOGIN</string>
+    <string name="buy_price">Buy Price</string>
+    <string name="sell_price">Sell Price</string>
+    <string name="net_profit_loss">Net Profit/Loss</string>
+    <string name="buy_date">Buy Date</string>
+    <string name="sell_date">Sell Date</string>
+    <string name="duration">Duration</string>
+    <string name="absolute_profit">Absolute Profit</string>
+
+
+
+    <string name="send_notification_users">Send Notification to Users</string>
+    <string name="share_name">Share Name</string>
+    <string name="buy_sell">BUY/SELL</string>
+    <string name="send_notification">SEND NOTIFICATION</string>
+    <string name="buy">Buy</string>
+    <string name="sell">Sell</string>
+    <string name="no_data">No data</string>
+    <string name="buy_this_share">Instruction: Buy this Share</string>
+    <string name="sell_this_share">Instruction: Sell this Share</string>
+    <string name="number_of_shares">Number of Shares</string>
+    <string name="cancel">CANCEL</string>
+    <string name="confirm">CONFIRM</string>
+    <string name="enter_the_number_of_share_bought">Enter the Number of Shares you bought:</string>
+    <string name="confirm_that_you_have_sold">Confirm that you sold the Shares:</string>
+    <string name="success">Success!</string>
+    <string name="you_have_confirmed_buying">You have confirmed buying this share.</string>
+    <string name="done">Done</string>
+    <string name="confrim_selling_share">You have confirmed selling this share.</string>
+    <string name="confirm_logout">Are you sure you want to logout:</string>
+    <string name="logout_button_text">LOGOUT</string>
+    <string name="send_notification_to_every_one">Send notification to everyone:</string>
+    <string name="send">SEND</string>
+    <string name="notifiation_sent_to_everyone">Notification sent to everyone.</string>
+</resources>

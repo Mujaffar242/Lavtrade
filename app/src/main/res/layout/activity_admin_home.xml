@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="adminHomeViewModel"
+            type="com.mujaffar.lavtrade.admin_module.viewmodel.AdminHomeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="40dp"
+        android:paddingEnd="40dp"
+        tools:context=".admin_module.ui.AdminHomeActivity">
+
+
+        <TextView
+            android:id="@+id/sendNotificationText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/black"
+            android:textFontWeight="500"
+            android:textSize="14sp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/send_notification_users" />
+
+        <EditText
+            android:id="@+id/editTextShareName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="@string/share_name"
+            android:text="@={adminHomeViewModel.shareName}"
+            android:paddingStart="16dp"
+            android:fontFamily="@font/roboto_regular"
+            android:textFontWeight="400"
+            android:textColorHint="#5100A5"
+            android:background="@drawable/admin_input_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sendNotificationText" />
+
+        <AutoCompleteTextView
+            android:id="@+id/buysellAutoComplete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="@string/buy_sell"
+            android:text="@={adminHomeViewModel.command}"
+            android:focusable="false"
+            android:drawableEnd="@drawable/ic_drop_down"
+            android:paddingStart="16dp"
+            android:fontFamily="@font/roboto_regular"
+            android:textFontWeight="400"
+            android:paddingEnd="25dp"
+            android:textColorHint="#5100A5"
+            android:background="@drawable/admin_input_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextShareName" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/send_notification"
+            android:onClick="@{()->adminHomeViewModel.writeNewNotification()}"
+            app:layout_constraintTop_toBottomOf="@+id/buysellAutoComplete"
+            android:background="@drawable/ic_send_noti_btn_ng"
+            android:fontFamily="@font/roboto_regular"
+            android:textFontWeight="500"
+            android:id="@+id/sendNotificationButton"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

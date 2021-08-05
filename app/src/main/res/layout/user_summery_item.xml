@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/user_summery_item_bg"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/shareName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/black"
+        android:textFontWeight="500"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Adani Green Energy" />
+
+    <TextView
+        android:id="@+id/buyPriceTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/gray"
+        android:textFontWeight="500"
+        android:textSize="14sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/shareName"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/buy_price"/>
+    <TextView
+        android:id="@+id/cellPriceTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/gray"
+        android:textFontWeight="500"
+        android:textSize="14sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/shareName"
+        app:layout_constraintStart_toEndOf="@id/buyPriceTitle"
+        app:layout_constraintEnd_toStartOf="@+id/netProfitLossTitle"
+        android:text="@string/sell_price"/>
+
+    <TextView
+        android:id="@+id/netProfitLossTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/gray"
+        android:textFontWeight="500"
+        android:textSize="14sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/shareName"
+        android:text="@string/net_profit_loss"/>
+
+
+
+
+
+
+
+
+    <TextView
+        android:id="@+id/buyPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/dark_gray"
+        android:textFontWeight="500"
+        android:textSize="18sp"
+        android:layout_marginTop="3dp"
+        app:layout_constraintTop_toBottomOf="@id/buyPriceTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="@string/buy_price"/>
+    <TextView
+        android:id="@+id/cellPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/dark_gray"
+        android:textFontWeight="500"
+        android:textSize="18sp"
+        android:layout_marginTop="3dp"
+        app:layout_constraintTop_toBottomOf="@id/buyPriceTitle"
+        app:layout_constraintStart_toEndOf="@id/buyPrice"
+        app:layout_constraintEnd_toStartOf="@+id/netProfitLoss"
+        tools:text="@string/sell_price"/>
+
+    <TextView
+        android:id="@+id/netProfitLoss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/dark_gray"
+        android:textFontWeight="500"
+        android:textSize="18sp"
+        android:layout_marginTop="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buyPriceTitle"
+        tools:text="@string/net_profit_loss"/>
+
+
+
+
+
+
+    <TextView
+        android:id="@+id/buyDateTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/gray"
+        android:textFontWeight="500"
+        android:textSize="14sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/buyPrice"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/buy_date"/>
+    <TextView
+        android:id="@+id/cellDateTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/gray"
+        android:textFontWeight="500"
+        android:textSize="14sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/buyPrice"
+        app:layout_constraintStart_toEndOf="@id/buyPriceTitle"
+        app:layout_constraintEnd_toStartOf="@+id/netProfitLossTitle"
+        android:text="@string/sell_date"/>
+
+    <TextView
+        android:id="@+id/durationTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/gray"
+        android:textFontWeight="500"
+        android:textSize="14sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buyPrice"
+        android:text="@string/duration"/>
+
+
+
+
+
+    <TextView
+        android:id="@+id/buyDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/dark_gray"
+        android:textFontWeight="500"
+        android:textSize="18sp"
+        android:layout_marginTop="3dp"
+        app:layout_constraintTop_toBottomOf="@id/buyDateTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="@string/buy_price"/>
+    <TextView
+        android:id="@+id/cellDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/dark_gray"
+        android:textFontWeight="500"
+        android:textSize="18sp"
+        android:layout_marginTop="3dp"
+        app:layout_constraintTop_toBottomOf="@id/buyDateTitle"
+        app:layout_constraintStart_toEndOf="@id/buyPrice"
+        app:layout_constraintEnd_toStartOf="@+id/netProfitLoss"
+        tools:text="@string/sell_price"/>
+
+    <TextView
+        android:id="@+id/duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/dark_gray"
+        android:textFontWeight="500"
+        android:textSize="18sp"
+        android:layout_marginTop="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buyDateTitle"
+        tools:text="@string/net_profit_loss"/>
+
+    <TextView
+        android:id="@+id/absoluteProfitTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/gray"
+        android:textFontWeight="500"
+        android:textSize="14sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/buyDate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/absolute_profit"/>
+
+
+    <TextView
+        android:id="@+id/absoluteProfit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/dark_gray"
+        android:textFontWeight="500"
+        android:textSize="18sp"
+        android:layout_marginTop="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/absoluteProfitTitle"
+        tools:text="@string/net_profit_loss"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

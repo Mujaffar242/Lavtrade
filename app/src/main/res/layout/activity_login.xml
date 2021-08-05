@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="loginViewModel"
+            type="com.mujaffar.lavtrade.login_module.viewmodel.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:paddingEnd="40dp"
+        android:paddingStart="40dp"
+        tools:context=".login_module.ui.activities.LoginActivity">
+
+
+        <include
+            android:id="@+id/titleLogo"
+            layout="@layout/logo_with_title" />
+
+        <EditText
+            android:id="@+id/editTextUserName"
+            style="@style/editTextStyle"
+            android:layout_marginTop="50dp"
+            android:hint="@string/username"
+            android:text="@={loginViewModel.email}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:lines="1"
+            android:inputType="textEmailAddress"
+            app:layout_constraintTop_toBottomOf="@+id/titleLogo" />
+
+        <EditText
+            style="@style/editTextStyle"
+            android:hint="@string/password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/editTextPassword"
+            android:layout_marginTop="16dp"
+            android:drawableEnd="@drawable/eye"
+            android:text="@={loginViewModel.password}"
+            android:paddingEnd="16dp"
+            android:lines="1"
+            android:inputType="textPassword"
+            app:layout_constraintTop_toBottomOf="@+id/editTextUserName" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_marginTop="16dp"
+            android:text="@string/login"
+            android:onClick="@{()->loginViewModel.checkValidationAndDoLogin()}"
+            android:id="@+id/loginButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextPassword"
+            style="@style/buttonStyle" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loginButton"
+            android:textColor="#E6DBFB"
+            android:fontFamily="@font/roboto_regular"
+            android:textSize="14sp"
+            android:textFontWeight="500"
+            android:layout_marginTop="16dp"
+            android:text="Forgot Password?" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

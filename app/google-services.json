@@ -1,0 +1,119 @@
+{
+  "project_info": {
+    "project_number": "719160966037",
+    "firebase_url": "https://mujaffar-4d858.firebaseio.com",
+    "project_id": "mujaffar-4d858",
+    "storage_bucket": "mujaffar-4d858.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:719160966037:android:1f11e9d33c9dcdae",
+        "android_client_info": {
+          "package_name": "com.example.mujaffar.mujaffar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "719160966037-p94r7chun3lrim64b078hs1c2pnrnrah.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDTn9s5QwPUi4Nt9APkIBr2E-8laHXmxY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "719160966037-p94r7chun3lrim64b078hs1c2pnrnrah.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "719160966037-lvqa7elioi2g3gkgmgmcl7cqn9dhvsq7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mujaffar.chatApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:719160966037:android:e9a272f1689d86fdd1949c",
+        "android_client_info": {
+          "package_name": "com.mujaffar.chat_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "719160966037-p94r7chun3lrim64b078hs1c2pnrnrah.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDTn9s5QwPUi4Nt9APkIBr2E-8laHXmxY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "719160966037-p94r7chun3lrim64b078hs1c2pnrnrah.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "719160966037-lvqa7elioi2g3gkgmgmcl7cqn9dhvsq7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mujaffar.chatApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:719160966037:android:0f32230a776c336dd1949c",
+        "android_client_info": {
+          "package_name": "com.mujaffar.lavtrade"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "719160966037-p94r7chun3lrim64b078hs1c2pnrnrah.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDTn9s5QwPUi4Nt9APkIBr2E-8laHXmxY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "719160966037-p94r7chun3lrim64b078hs1c2pnrnrah.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "719160966037-lvqa7elioi2g3gkgmgmcl7cqn9dhvsq7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mujaffar.chatApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
