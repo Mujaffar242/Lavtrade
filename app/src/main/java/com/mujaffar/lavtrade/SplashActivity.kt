@@ -10,7 +10,6 @@ import com.mujaffar.currencyconverter.network.GoogleSheetService
 import com.mujaffar.lavtrade.admin_module.models.BuySellModel
 import com.mujaffar.lavtrade.login_module.ui.activities.LoginActivity
 import com.mujaffar.lavtrade.models.SheetPostModel
-import com.mujaffar.lavtrade.network.SheetsExample
 import com.mujaffar.lavtrade.utils.SpreadsheetSnippets
 
 class SplashActivity : AppCompatActivity() {

@@ -28,7 +28,7 @@ private const val BASE_URL = "https://sheets.googleapis.com/v4/spreadsheets/"
 interface GoogleSheetService {
 
 
-    @PUT("{sheetId}/values/{sheetName}!{range}")
+    @POST("{sheetId}/values/{sheetName}!{range}:append")
     fun postDataTOGoogleSheet(@Path("sheetId") sheetId:String,@Path("sheetName")sheetName:String,@Path("range")range:String,@Query("valueInputOption")valueInputOption:String,
                               @Body sheetPostModel: SheetPostModel
     )
@@ -55,7 +55,7 @@ val sharedPrefHelper: SharedPrefHelper = SharedPrefHelper(MainApplication.applic
 
 var client = OkHttpClient.Builder().addInterceptor { chain ->
     val newRequest: Request = chain.request().newBuilder()
-        .addHeader("Authorization", "Bearer ya29.a0ARrdaM9f1QOdpAL-vG1P_JEbLnTw99fhofgN6CnEid6fzAnpDNMDfCOYUB2q-YgcfDgu1LimDakR_AwNDwqOpD1jaOOMRnCYFZVQsExQpAGCAz3JhwPp7xOBV26XrJ7aXz2Z2oGP2Ph904DFiAu_RJeViV-Q")
+        .addHeader("Authorization", "Bearer ya29.a0ARrdaM9pcq3IR5Qlb3rOrm0QukZkM_bZhvMDyMWvYwV7UZs7br6lptC7B4F9CZ2EgGROIxN2egl-mulfjmAmZSaMZZS47D4ovadnFsamiWmznvl_iVTdCEtAcm6SJQDxuF3-FEEMQtT6HMiXpOiiLRp1lobu")
         .build()
     chain.proceed(newRequest)
 }.build()

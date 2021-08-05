@@ -58,10 +58,10 @@ class UserHomeRepository(val database: BuySellDatabase) {
 
             arraylist.add(buysellarry)
 
-           val sheetPostModel= SheetPostModel("A1:B1","ROWS",arraylist)
+           val sheetPostModel= SheetPostModel("Sheet1!A:B","ROWS",arraylist)
 
 
-          GoogleSheetApi.retrofitService.postDataTOGoogleSheet("15B-ce4CC7OBqieMwH4TLBzUzMHHC4qzt2UEfbCfaPnM","Sheet1","A1:B1","USER_ENTERED",sheetPostModel).await()
+          GoogleSheetApi.retrofitService.postDataTOGoogleSheet("15B-ce4CC7OBqieMwH4TLBzUzMHHC4qzt2UEfbCfaPnM","Sheet1","A:B","USER_ENTERED",sheetPostModel).await()
 
 
             /*val sheeetSnap= SpreadsheetSnippets(SheetsExample.createSheetsService(MainApplication.applicationContext()))
