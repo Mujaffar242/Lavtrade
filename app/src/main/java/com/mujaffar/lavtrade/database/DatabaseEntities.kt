@@ -20,6 +20,8 @@ data class DatabaseBuySellModel constructor(
 {
     @PrimaryKey(autoGenerate = true)
     var id:Int=0
+
+    var numberOfShare:Int=0
 }
 
 

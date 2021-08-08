@@ -33,5 +33,12 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:id="@+id/contactListRecyclerView" />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/fabSummery"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

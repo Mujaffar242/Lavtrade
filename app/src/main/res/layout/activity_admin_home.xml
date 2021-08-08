@@ -73,7 +73,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/send_notification"
-            android:onClick="@{()->adminHomeViewModel.writeNewNotification()}"
             app:layout_constraintTop_toBottomOf="@+id/buysellAutoComplete"
             android:background="@drawable/ic_send_noti_btn_ng"
             android:fontFamily="@font/roboto_regular"

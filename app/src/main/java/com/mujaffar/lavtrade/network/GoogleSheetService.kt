@@ -7,6 +7,7 @@ import com.mujaffar.lavtrade.admin_module.models.BuySellModel
 import com.mujaffar.lavtrade.models.SheetPostModel
 import com.mujaffar.lavtrade.models.SheetresponceModel
 import com.mujaffar.lavtrade.network.SendNotificationResponce
+import com.mujaffar.lavtrade.network.SheetDataResponceModel
 import com.mujaffar.lavtrade.utils.Appconstants
 import com.mujaffar.lavtrade.utils.SharedPrefHelper
 import com.squareup.moshi.Moshi
@@ -34,6 +35,14 @@ interface GoogleSheetService {
     )
     // The Coroutine Call Adapter allows us to return a Deferred, a Job with a result
             :Deferred<SheetresponceModel>
+
+
+    @GET("{sheetId}/values/{sheetName}!{range}")
+    fun getGoogleSheetData(@Path("sheetId") sheetId:String,@Path("sheetName")sheetName:String,@Path("range")range:String,@Query("key")key:String
+    )
+    // The Coroutine Call Adapter allows us to return a Deferred, a Job with a result
+            :Deferred<SheetDataResponceModel>
+
 }
 
 /*
@@ -55,7 +64,7 @@ val sharedPrefHelper: SharedPrefHelper = SharedPrefHelper(MainApplication.applic
 
 var client = OkHttpClient.Builder().addInterceptor { chain ->
     val newRequest: Request = chain.request().newBuilder()
-        .addHeader("Authorization", "Bearer ya29.a0ARrdaM9pcq3IR5Qlb3rOrm0QukZkM_bZhvMDyMWvYwV7UZs7br6lptC7B4F9CZ2EgGROIxN2egl-mulfjmAmZSaMZZS47D4ovadnFsamiWmznvl_iVTdCEtAcm6SJQDxuF3-FEEMQtT6HMiXpOiiLRp1lobu")
+        .addHeader("Authorization", "Bearer ya29.a0ARrdaM8lXOE8jzu1znB1yAMa5Z86hEf2qTfEeQdeytXs_stH6tHoG93KVrRx_qXnUM8XkQiQbHFxk3mx77N8_ZzcrYSvlN5Y2iuKlUbBw48VFrkkH_jGzQ6aHHdSyg9ru5W8y37qNcWmGVJIEh9qqM1Gt2Mi")
         .build()
     chain.proceed(newRequest)
 }.build()
@@ -70,6 +79,9 @@ private val retrofitWithAuth = Retrofit.Builder()
 
 object GoogleSheetApi {
     val retrofitService : GoogleSheetService by lazy { retrofitWithAuth.create(GoogleSheetService::class.java) }
+
+    val retrofitServiceWithoutAuth : GoogleSheetService by lazy { retrofit.create(GoogleSheetService::class.java) }
+
 }
 
 

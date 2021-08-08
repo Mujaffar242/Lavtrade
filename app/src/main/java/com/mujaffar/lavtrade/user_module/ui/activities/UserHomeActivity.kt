@@ -1,9 +1,9 @@
 package com.mujaffar.lavtrade.user_module.ui.activities
 
 import android.app.ProgressDialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -11,15 +11,12 @@ import androidx.lifecycle.ViewModelProviders
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.messaging.ktx.messaging
 import com.mujaffar.lavtrade.R
+import com.mujaffar.lavtrade.admin_module.ui.AdminHomeActivity
 import com.mujaffar.lavtrade.admin_module.ui.adapter.BuySellListAdapter
-import com.mujaffar.lavtrade.admin_module.ui.adapter.ContactViewHolder
 import com.mujaffar.lavtrade.databinding.ActivityUserHomeBinding
-import com.mujaffar.lavtrade.databinding.CustomDailogueViewBinding
-import com.mujaffar.lavtrade.databinding.UserHomeItemBinding
 import com.mujaffar.lavtrade.user_module.BuySellClickListner
 import com.mujaffar.lavtrade.user_module.viewmodel.UserHomeviewModel
 import com.mujaffar.lavtrade.utils.Appconstants
-import com.mujaffar.lavtrade.utils.UtilityFaction
 import com.mujaffar.lavtrade.utils.createDialogue
 import com.mujaffar.medremind.database.DatabaseBuySellModel
 
@@ -48,6 +45,10 @@ class UserHomeActivity : AppCompatActivity(), BuySellClickListner {
 
         //init progress dialog
         progressDialog = ProgressDialog(this)
+
+
+
+
 
 
         //init binding
@@ -89,6 +90,13 @@ class UserHomeActivity : AppCompatActivity(), BuySellClickListner {
 
 
 
+        binding.fabSummery.setOnClickListener {
+            startActivity(
+                Intent(
+                    this, SummeryActivity::class.java
+                )
+            )
+        }
 
         viewModel.buycellList?.observe(this, Observer { buycellList ->
             buycellList?.apply {
@@ -131,8 +139,6 @@ class UserHomeActivity : AppCompatActivity(), BuySellClickListner {
     * */
     override fun onBuySellClick(databaseBuySellModel: DatabaseBuySellModel) {
 
-        viewModel.changeCompleteStatus(databaseBuySellModel)
-
         //if already buy or sell simplely return
         if (databaseBuySellModel.isByOrSell)
             return
@@ -140,16 +146,17 @@ class UserHomeActivity : AppCompatActivity(), BuySellClickListner {
         //show dailoge based on command type
         if(databaseBuySellModel.command.equals("Buy"))
         {
-            createDialogue(this,Appconstants.DialogueType.BUY_DIALOUGE)
+            createDialogue(this,Appconstants.DialogueType.BUY_DIALOUGE,databaseBuySellModel)
         }
         else{
-            createDialogue(this,Appconstants.DialogueType.SELL_DIALOUGE)
+            createDialogue(this,Appconstants.DialogueType.SELL_DIALOUGE,databaseBuySellModel)
         }
 
 
 
         //otherwise show dialogue for confirm buy or sell
        // viewModel.changeCompleteStatus(databaseBuySellModel)
+
 
     }
 
@@ -167,7 +174,7 @@ class UserHomeActivity : AppCompatActivity(), BuySellClickListner {
         // as you specify a parent activity in AndroidManifest.xml.
         val id: Int = item.getItemId()
         return if (id == R.id.logout) {
-            createDialogue(this,Appconstants.DialogueType.LOG_OUT)
+            createDialogue(this,Appconstants.DialogueType.LOG_OUT,null)
             true
         } else super.onOptionsItemSelected(item)
     }

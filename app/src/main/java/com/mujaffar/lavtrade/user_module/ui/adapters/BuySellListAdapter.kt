@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.mujaffar.lavtrade.R
 import com.mujaffar.lavtrade.user_module.BuySellClickListner
-import com.mujaffar.lavtrade.admin_module.models.BuySellModel
 import com.mujaffar.lavtrade.databinding.UserHomeItemBinding
 import com.mujaffar.medremind.database.DatabaseBuySellModel
 
@@ -19,14 +18,14 @@ import com.mujaffar.medremind.database.DatabaseBuySellModel
  */
 
 class BuySellListAdapter(private val buySellClickListner: BuySellClickListner) :
-    ListAdapter<DatabaseBuySellModel, ContactViewHolder>(ContactDiffCallback()) {
+    ListAdapter<DatabaseBuySellModel, BuySellViewHolder>(ContactDiffCallback()) {
 
     /**
      * Called when RecyclerView needs a new {@link ViewHolder} of the given type to represent
      * an item.
      */
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
-        return ContactViewHolder.from(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BuySellViewHolder {
+        return BuySellViewHolder.from(parent)
     }
 
 
@@ -35,7 +34,7 @@ class BuySellListAdapter(private val buySellClickListner: BuySellClickListner) :
      * update the contents of the {@link ViewHolder#itemView} to reflect the item at the given
      * position.
      */
-    override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: BuySellViewHolder, position: Int) {
         holder.viewDataBinding.also {
             it.buySellModel = getItem(position)
             it.buySellClickListner = buySellClickListner
@@ -53,20 +52,20 @@ class BuySellListAdapter(private val buySellClickListner: BuySellClickListner) :
 /**
  * ViewHolder for buy cell items. All work is done by data binding.
  */
-class ContactViewHolder private constructor(val viewDataBinding: UserHomeItemBinding) :
+class BuySellViewHolder private constructor(val viewDataBinding: UserHomeItemBinding) :
     RecyclerView.ViewHolder(viewDataBinding.root) {
     companion object {
         @LayoutRes
         val LAYOUT = R.layout.user_home_item
 
-        public fun from(parent: ViewGroup): ContactViewHolder {
+        public fun from(parent: ViewGroup): BuySellViewHolder {
             val withDataBinding: UserHomeItemBinding = DataBindingUtil.inflate(
                 LayoutInflater.from(parent.context),
                 LAYOUT,
                 parent,
                 false
             )
-            return ContactViewHolder(withDataBinding)
+            return BuySellViewHolder(withDataBinding)
         }
 
 

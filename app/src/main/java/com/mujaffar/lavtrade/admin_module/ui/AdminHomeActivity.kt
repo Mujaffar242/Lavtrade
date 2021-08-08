@@ -60,6 +60,12 @@ class AdminHomeActivity : AppCompatActivity() {
 
 
 
+        adminHomeBinding.sendNotificationButton.setOnClickListener {
+
+            adminHomeViewModel.writeNewNotification(this)
+        }
+
+
 
     }
 
@@ -76,7 +82,7 @@ class AdminHomeActivity : AppCompatActivity() {
         // as you specify a parent activity in AndroidManifest.xml.
         val id: Int = item.getItemId()
         return if (id == R.id.logout) {
-            createDialogue(this, Appconstants.DialogueType.LOG_OUT)
+            createDialogue(this, Appconstants.DialogueType.LOG_OUT,null)
             true
         } else super.onOptionsItemSelected(item)
     }

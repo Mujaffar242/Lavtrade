@@ -57,6 +57,7 @@
             android:paddingStart="16dp"
             android:fontFamily="@font/roboto_regular"
             android:textFontWeight="400"
+            android:inputType="number"
             android:textColorHint="#5100A5"
             android:background="@drawable/admin_input_bg"
             android:textColor="@color/black" />

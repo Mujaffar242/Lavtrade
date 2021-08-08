@@ -12,14 +12,14 @@ import com.mujaffar.medremind.database.getDatabase
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class UserHomeviewModel(application: Application) : AndroidViewModel(application)
+class UserSummeryviewModel(application: Application) : AndroidViewModel(application)
 {
     val database= getDatabase(application)
 
     val userHomeRepository=UserHomeRepository(database)
 
-    //for hold currency list return by repository
-    var  buycellList=userHomeRepository.allBuySellForToday
+    //for hold list of user summery data return by repository
+    var  summeryList=userHomeRepository.googleSheetDataResponceModel
 
 
 
@@ -31,18 +31,14 @@ class UserHomeviewModel(application: Application) : AndroidViewModel(application
     * */
     init {
         showLoadingProgressBar.value=false
-    }
 
-
-    /*
-    * funcation for update single buy sell row on room database
-    * */
-     fun changeCompleteStatus(databaseBuySellModel: DatabaseBuySellModel,context: Context)
-    {
         viewModelScope.launch {
-            userHomeRepository.updateCompleteStatus(databaseBuySellModel, sharedPrefHelper.getStringValueFromSharedPrefrences(Appconstants.USERNAME),context)
+            userHomeRepository.getDataFromGoogleSheet( sharedPrefHelper.getStringValueFromSharedPrefrences(Appconstants.USERNAME))
         }
     }
+
+
+
 
 
 

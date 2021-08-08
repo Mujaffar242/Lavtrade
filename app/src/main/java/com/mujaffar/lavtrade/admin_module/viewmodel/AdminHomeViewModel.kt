@@ -13,7 +13,9 @@ import com.mujaffar.lavtrade.models.NotificationData
 import com.mujaffar.lavtrade.network.NotificationBody
 import com.mujaffar.lavtrade.network.NotificationRequestModel
 import com.mujaffar.lavtrade.repository.SendFcmRepository
+import com.mujaffar.lavtrade.utils.Appconstants
 import com.mujaffar.lavtrade.utils.UtilityFaction
+import com.mujaffar.lavtrade.utils.createDialogue
 import kotlinx.coroutines.launch
 import java.util.*
 
@@ -39,12 +41,15 @@ class AdminHomeViewModel(application: Application) : AndroidViewModel(applicatio
     /*
     * add notication data to firebase real time database
     * */
-    fun writeNewNotification() {
+    fun writeNewNotification(context: Context) {
         /*   val notification = NotificationData(shareName.value.toString(), command.value.toString())
            database.child("notifications").child(UtilityFaction.getCurrentDateString()).child(Calendar.getInstance().timeInMillis.toString()).setValue(notification)*/
 
         if(isValid().equals(""))
-        sendFcmMessage()
+        {
+           // sendFcmMessage()
+            createDialogue(context,Appconstants.DialogueType.SEND_NOTIFICATION,null)
+        }
     }
 
 

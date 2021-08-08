@@ -2,12 +2,16 @@ package com.mujaffar.lavtrade.utils
 
 import android.app.Activity
 import android.content.Context
+import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import com.mujaffar.lavtrade.R
+import com.mujaffar.lavtrade.admin_module.ui.AdminHomeActivity
 import com.mujaffar.lavtrade.admin_module.viewmodel.AdminHomeViewModel
 import com.mujaffar.lavtrade.databinding.CustomDailogueViewBinding
+import com.mujaffar.lavtrade.user_module.ui.activities.UserHomeActivity
+import com.mujaffar.medremind.database.DatabaseBuySellModel
 
 lateinit var adminHomeViewModel: AdminHomeViewModel
 
@@ -15,7 +19,7 @@ lateinit var adminHomeViewModel: AdminHomeViewModel
    * create buy dialouge
    * */
 
-fun createDialogue(context: Context,type:Int) {
+fun createDialogue(context: Context,type:Int,databaseBuySellModel: DatabaseBuySellModel?) {
     val builder = AlertDialog.Builder(context)
 
     val customDailogueViewBinding = CustomDailogueViewBinding.inflate(LayoutInflater.from(context))
@@ -32,8 +36,23 @@ fun createDialogue(context: Context,type:Int) {
         customDailogueViewBinding.subTitle.setText(context.getString(R.string.enter_the_number_of_share_bought))
 
         customDailogueViewBinding.confrimbutton.setOnClickListener {
+            
+            if(customDailogueViewBinding.editTextNumberOfShare.text.toString().equals(""))
+            {
+                customDailogueViewBinding.editTextNumberOfShare.setError(context.getString(R.string.enternoofshare))
+                return@setOnClickListener
+            }
+            
             alertDialog.dismiss()
-            createDialogue(context,Appconstants.DialogueType.BUY_CONFIRM)
+
+            //add number of share to buy
+            databaseBuySellModel?.numberOfShare= customDailogueViewBinding.editTextNumberOfShare.text.toString().toInt()
+
+            (context as UserHomeActivity).viewModel.changeCompleteStatus(databaseBuySellModel as DatabaseBuySellModel,context)
+
+            (context as UserHomeActivity).viewModel.showLoadingSpinner()
+
+            //   createDialogue(context,Appconstants.DialogueType.BUY_CONFIRM,null)
         }
     }
     else if(type==Appconstants.DialogueType.SELL_DIALOUGE)
@@ -44,7 +63,10 @@ fun createDialogue(context: Context,type:Int) {
 
         customDailogueViewBinding.confrimbutton.setOnClickListener {
             alertDialog.dismiss()
-            createDialogue(context,Appconstants.DialogueType.SELL_CONFIRM)
+            (context as UserHomeActivity).viewModel.changeCompleteStatus(databaseBuySellModel as DatabaseBuySellModel,context)
+
+            (context as UserHomeActivity).viewModel.showLoadingSpinner()
+            //   createDialogue(context,Appconstants.DialogueType.SELL_CONFIRM,null)
         }
     }
     else if(type==Appconstants.DialogueType.BUY_CONFIRM)
@@ -96,8 +118,14 @@ fun createDialogue(context: Context,type:Int) {
         customDailogueViewBinding.confrimbutton.setText(context.getString(R.string.send))
 
         customDailogueViewBinding.confrimbutton.setOnClickListener {
-
+            alertDialog.dismiss()
+            (context as AdminHomeActivity).adminHomeViewModel.sendFcmMessage()
+            createDialogue(context,Appconstants.DialogueType.CONFRIM_NOTIFICATION,null)
         }
+
+
+
+
     }
     else if(type==Appconstants.DialogueType.CONFRIM_NOTIFICATION)
     {
