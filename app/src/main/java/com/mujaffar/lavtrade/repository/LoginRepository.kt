@@ -37,7 +37,6 @@ class LoginRepository(context: Context) {
                             if (task.isSuccessful) {
                                 val token = task.result!!.token
                                 Log.e("token2",token.toString())
-                                sharedPreferences.insertStringToSharedPrefrences(Appconstants.AUTHTOKEN,token.toString())
                                 sharedPreferences.insertBooleanToSharedPrefrences(Appconstants.IS_LOGIN,task.isSuccessful)
                                 sharedPreferences.insertStringToSharedPrefrences(Appconstants.USERNAME,email.toString())
 

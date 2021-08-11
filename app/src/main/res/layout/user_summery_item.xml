@@ -77,6 +77,7 @@
             android:textColor="@color/dark_gray"
             android:textFontWeight="500"
             android:textSize="18sp"
+            android:text="@{sheetRow.get(1)}"
             android:layout_marginTop="3dp"
             app:layout_constraintTop_toBottomOf="@id/buyPriceTitle"
             app:layout_constraintStart_toStartOf="parent"
@@ -86,14 +87,15 @@
             android:id="@+id/cellPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{sheetRow.get(3)}"
             android:fontFamily="@font/roboto_regular"
             android:textColor="@color/dark_gray"
             android:textFontWeight="500"
             android:textSize="18sp"
             android:layout_marginTop="3dp"
             app:layout_constraintTop_toBottomOf="@id/buyPriceTitle"
-            app:layout_constraintStart_toEndOf="@id/buyPrice"
-            app:layout_constraintEnd_toStartOf="@+id/netProfitLoss"
+            app:layout_constraintStart_toEndOf="@id/buyPriceTitle"
+            app:layout_constraintEnd_toStartOf="@+id/netProfitLossTitle"
             tools:text="@string/sell_price" />
 
         <TextView
@@ -103,6 +105,7 @@
             android:fontFamily="@font/roboto_regular"
             android:textColor="@color/dark_gray"
             android:textFontWeight="500"
+            android:text="@{sheetRow.get(6)}"
             android:textSize="18sp"
             android:layout_marginTop="3dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -159,6 +162,7 @@
             android:textColor="@color/dark_gray"
             android:textFontWeight="500"
             android:textSize="18sp"
+            android:text="@{sheetRow.get(2)}"
             android:layout_marginTop="3dp"
             app:layout_constraintTop_toBottomOf="@id/buyDateTitle"
             app:layout_constraintStart_toStartOf="parent"
@@ -171,11 +175,12 @@
             android:fontFamily="@font/roboto_regular"
             android:textColor="@color/dark_gray"
             android:textFontWeight="500"
+            android:text="@{sheetRow.get(4)}"
             android:textSize="18sp"
             android:layout_marginTop="3dp"
             app:layout_constraintTop_toBottomOf="@id/buyDateTitle"
-            app:layout_constraintStart_toEndOf="@id/buyPrice"
-            app:layout_constraintEnd_toStartOf="@+id/netProfitLoss"
+            app:layout_constraintStart_toEndOf="@id/buyPriceTitle"
+            app:layout_constraintEnd_toStartOf="@+id/netProfitLossTitle"
             tools:text="@string/sell_price" />
 
         <TextView
@@ -186,6 +191,7 @@
             android:textColor="@color/dark_gray"
             android:textFontWeight="500"
             android:textSize="18sp"
+            android:text="@{sheetRow.get(5)}"
             android:layout_marginTop="3dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/buyDateTitle"
@@ -201,8 +207,8 @@
             android:textSize="14sp"
             android:layout_marginTop="16dp"
             app:layout_constraintTop_toBottomOf="@id/buyDate"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/buyPriceTitle"
+            app:layout_constraintEnd_toStartOf="@+id/netProfitLossTitle"
             android:text="@string/absolute_profit" />
 
 
@@ -214,9 +220,10 @@
             android:textColor="@color/dark_gray"
             android:textFontWeight="500"
             android:textSize="18sp"
+            android:text="@{sheetRow.get(7)}"
             android:layout_marginTop="3dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/buyPriceTitle"
+            app:layout_constraintEnd_toStartOf="@+id/netProfitLossTitle"
             app:layout_constraintTop_toBottomOf="@id/absoluteProfitTitle"
             tools:text="@string/net_profit_loss" />
 

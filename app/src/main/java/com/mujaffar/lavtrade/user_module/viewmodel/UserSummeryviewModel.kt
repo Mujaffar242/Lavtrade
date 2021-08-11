@@ -33,7 +33,7 @@ class UserSummeryviewModel(application: Application) : AndroidViewModel(applicat
         showLoadingProgressBar.value=false
 
         viewModelScope.launch {
-            userHomeRepository.getDataFromGoogleSheet( sharedPrefHelper.getStringValueFromSharedPrefrences(Appconstants.USERNAME))
+            userHomeRepository.getDataFromGoogleSheet(sharedPrefHelper.getStringValueFromSharedPrefrences(Appconstants.USERNAME))
         }
     }
 

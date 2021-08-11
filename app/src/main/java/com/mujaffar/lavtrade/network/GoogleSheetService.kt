@@ -1,12 +1,12 @@
 package com.mujaffar.currencyconverter.network
 
-import android.content.Context
+import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeTokenRequest
+import com.google.api.client.http.javanet.NetHttpTransport
+import com.google.api.client.json.jackson2.JacksonFactory
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.mujaffar.lavtrade.MainApplication
-import com.mujaffar.lavtrade.admin_module.models.BuySellModel
 import com.mujaffar.lavtrade.models.SheetPostModel
 import com.mujaffar.lavtrade.models.SheetresponceModel
-import com.mujaffar.lavtrade.network.SendNotificationResponce
 import com.mujaffar.lavtrade.network.SheetDataResponceModel
 import com.mujaffar.lavtrade.utils.Appconstants
 import com.mujaffar.lavtrade.utils.SharedPrefHelper
@@ -64,7 +64,7 @@ val sharedPrefHelper: SharedPrefHelper = SharedPrefHelper(MainApplication.applic
 
 var client = OkHttpClient.Builder().addInterceptor { chain ->
     val newRequest: Request = chain.request().newBuilder()
-        .addHeader("Authorization", "Bearer ya29.a0ARrdaM8lXOE8jzu1znB1yAMa5Z86hEf2qTfEeQdeytXs_stH6tHoG93KVrRx_qXnUM8XkQiQbHFxk3mx77N8_ZzcrYSvlN5Y2iuKlUbBw48VFrkkH_jGzQ6aHHdSyg9ru5W8y37qNcWmGVJIEh9qqM1Gt2Mi")
+        .addHeader("Authorization", "Bearer "+ sharedPrefHelper.getStringValueFromSharedPrefrences(Appconstants.AUTHTOKEN))
         .build()
     chain.proceed(newRequest)
 }.build()
@@ -77,7 +77,15 @@ private val retrofitWithAuth = Retrofit.Builder()
     .client(client)
     .build()
 
+
+
+
+
 object GoogleSheetApi {
+
+
+    var scope=ArrayList<String>()
+
     val retrofitService : GoogleSheetService by lazy { retrofitWithAuth.create(GoogleSheetService::class.java) }
 
     val retrofitServiceWithoutAuth : GoogleSheetService by lazy { retrofit.create(GoogleSheetService::class.java) }

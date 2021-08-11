@@ -4,6 +4,10 @@ import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeTokenRequest
+import com.google.api.client.googleapis.auth.oauth2.GoogleCredential
+import com.google.api.client.http.javanet.NetHttpTransport
+import com.google.api.client.json.jackson2.JacksonFactory
 import com.google.firebase.database.*
 import com.mujaffar.currencyconverter.network.GoogleSheetApi
 import com.mujaffar.lavtrade.MainApplication
@@ -13,14 +17,13 @@ import com.mujaffar.lavtrade.models.SheetPostModel
 import com.mujaffar.lavtrade.network.SheetDataResponceModel
 import com.mujaffar.lavtrade.network.SheetsExample
 import com.mujaffar.lavtrade.user_module.ui.activities.UserHomeActivity
-import com.mujaffar.lavtrade.utils.Appconstants
-import com.mujaffar.lavtrade.utils.SpreadsheetSnippets
-import com.mujaffar.lavtrade.utils.UtilityFaction
-import com.mujaffar.lavtrade.utils.createDialogue
+import com.mujaffar.lavtrade.utils.*
 import com.mujaffar.medremind.database.BuySellDatabase
 import com.mujaffar.medremind.database.DatabaseBuySellModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class UserHomeRepository(val database: BuySellDatabase) {
@@ -47,7 +50,9 @@ class UserHomeRepository(val database: BuySellDatabase) {
 
         withContext(Dispatchers.IO)
         {
-        googleSheetDataResponceModel.value =   GoogleSheetApi.retrofitServiceWithoutAuth.getGoogleSheetData("15B-ce4CC7OBqieMwH4TLBzUzMHHC4qzt2UEfbCfaPnM",userName,"A:J","AIzaSyBa8lxt2dSjV5aw9RkU0uh38h6jYCI9mm8").await()
+        val data =   GoogleSheetApi.retrofitServiceWithoutAuth.getGoogleSheetData("1IVJPVZW3XWtTOEJWFE5pDs-AoxcFvHikbIgOatYMGz4",userName,"A:J","AIzaSyCGXe3AW-Z33ujqd99IIGLmeX0IOCeVzBQ").await()
+
+            googleSheetDataResponceModel.postValue(data)
         }
     }
 
@@ -63,6 +68,8 @@ class UserHomeRepository(val database: BuySellDatabase) {
             databaseBuySellModel.isByOrSell = true
             database.buySellDao.update(databaseBuySellModel)
         }*/
+
+        val sharedPreferences = SharedPrefHelper(context)
 
 
         withContext(Dispatchers.IO)
@@ -85,7 +92,19 @@ class UserHomeRepository(val database: BuySellDatabase) {
 
 
             try {
-                GoogleSheetApi.retrofitService.postDataTOGoogleSheet("15B-ce4CC7OBqieMwH4TLBzUzMHHC4qzt2UEfbCfaPnM","Sheet1","A:E","USER_ENTERED",sheetPostModel).await()
+
+
+                val credentials =
+                    GoogleCredential.fromStream(context.resources.assets.open("mujaffar-4d858-e3add9560dd6.json"))
+                        .createScoped(Collections.singletonList("https://www.googleapis.com/auth/spreadsheets"))
+                //  credentials.refreshIfExpired()
+                credentials.refreshToken()
+                val accessToken = credentials.accessToken
+                Log.e("log_data", "Token :" + accessToken)
+                sharedPreferences.insertStringToSharedPrefrences(Appconstants.AUTHTOKEN,accessToken)
+
+
+                GoogleSheetApi.retrofitService.postDataTOGoogleSheet("1IVJPVZW3XWtTOEJWFE5pDs-AoxcFvHikbIgOatYMGz4","Sheet1","A:E","USER_ENTERED",sheetPostModel).await()
 
                 //mark this share action complete on local database
                 databaseBuySellModel.isByOrSell=true

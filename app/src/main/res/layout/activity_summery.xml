@@ -21,6 +21,7 @@
             tools:itemCount="5"
             android:id="@+id/recylerViewSummery"
             tools:listitem="@layout/user_summery_item"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
