@@ -1,6 +1,5 @@
 package com.mujaffar.lavtrade.fcm
 
-import android.R
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -10,6 +9,7 @@ import android.os.Build
 import androidx.core.app.NotificationCompat
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import com.mujaffar.lavtrade.R
 import com.mujaffar.lavtrade.user_module.ui.activities.UserHomeActivity
 import com.mujaffar.medremind.database.DatabaseBuySellModel
 import com.mujaffar.medremind.database.getDatabase
@@ -63,7 +63,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         val notificationBuilder: NotificationCompat.Builder = NotificationCompat.Builder(
             applicationContext, "id_product"
         )
-            .setSmallIcon(R.mipmap.sym_def_app_icon) //your app icon
+            .setSmallIcon(R.mipmap.ic_launcher) //your app icon
             .setChannelId(id)
             .setContentTitle(remoteMessage.data.get("body"))
             .setAutoCancel(true).setContentIntent(pendingIntent)

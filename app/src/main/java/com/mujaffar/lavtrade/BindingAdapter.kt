@@ -46,3 +46,17 @@ fun ConstraintLayout.setbackground(data:DatabaseBuySellModel)
         setBackgroundResource(R.drawable.home_user_buybg)
     }
 }
+
+
+/*
+@BindingAdapter("setTextWithAmount")
+fun TextView.setTextWithAmount(amount:String)
+{
+    setText("₹ "+amount)
+}
+
+@BindingAdapter("setTextWithMonths")
+fun TextView.setTextWithAmount(amount:String)
+{
+    setText("₹ "+amount)
+}*/

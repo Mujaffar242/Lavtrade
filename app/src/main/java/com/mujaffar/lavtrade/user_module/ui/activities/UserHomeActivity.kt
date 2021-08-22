@@ -56,6 +56,7 @@ class UserHomeActivity : AppCompatActivity(), BuySellClickListner {
 
 
 
+        //subscribe admin message  topic to recive notification
         Firebase.messaging.subscribeToTopic("AdminMessage")
 
 

@@ -41,7 +41,6 @@
             app:layout_constraintStart_toStartOf="parent"
             android:id="@+id/editTextPassword"
             android:layout_marginTop="16dp"
-            android:drawableEnd="@drawable/eye"
             android:text="@={loginViewModel.password}"
             android:paddingEnd="16dp"
             android:lines="1"

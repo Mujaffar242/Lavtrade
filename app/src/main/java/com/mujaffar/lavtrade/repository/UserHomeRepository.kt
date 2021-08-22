@@ -51,7 +51,6 @@ class UserHomeRepository(val database: BuySellDatabase) {
         withContext(Dispatchers.IO)
         {
         val data =   GoogleSheetApi.retrofitServiceWithoutAuth.getGoogleSheetData("1IVJPVZW3XWtTOEJWFE5pDs-AoxcFvHikbIgOatYMGz4",userName,"A:J","AIzaSyCGXe3AW-Z33ujqd99IIGLmeX0IOCeVzBQ").await()
-
             googleSheetDataResponceModel.postValue(data)
         }
     }

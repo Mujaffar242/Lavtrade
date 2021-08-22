@@ -3,6 +3,7 @@ package com.mujaffar.lavtrade.user_module.ui.activities
 import android.app.ProgressDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -49,6 +50,10 @@ class SummeryActivity : AppCompatActivity() {
 
 
 
+        setTitle(getString(R.string.summery))
+
+        //for show back button on actionbar
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
 
         //init viewmodel
@@ -67,18 +72,46 @@ class SummeryActivity : AppCompatActivity() {
 
         binding.userSummeryViewModel = viewModel
 
-
+        viewModel.showLoadingSpinner()
         //observe schedule live data based on different page type and add to adapter
         //if page type is contactlist
         viewModel.summeryList?.observe(this, Observer { sumerylist ->
             sumerylist?.apply {
                 //viewModelAdapter?.contacts = contact as List<DatabaseContactModel>
 
-                viewModelAdapter?.summeryList=sumerylist.values
+                var list:ArrayList<ArrayList<String>>
+
+                list=sumerylist.values as ArrayList<ArrayList<String>>
 
 
+                list?.removeAt(0)
+
+                viewModelAdapter?.summeryList=list
+                viewModel.hideLoadingSpinner()
             }
         })
 
+
+        viewModel.showLoadingProgressBar.observe(this, Observer {
+            if(it)
+            {
+                progressDialog.show()
+            }
+            else{
+                progressDialog.dismiss()
+            }
+        })
+
+    }
+
+    // function to the button on press
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.getItemId()) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

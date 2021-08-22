@@ -7,12 +7,21 @@
         <variable
             name="sheetRow"
             type="java.util.List&lt;String&gt;"/>
+
+        <variable
+            name="symbole"
+            type="com.mujaffar.lavtrade.utils.Symbole" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/user_summery_item_bg"
+        android:background="@drawable/summerybg"
+        android:elevation="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:padding="16dp">
 
         <TextView
@@ -77,7 +86,7 @@
             android:textColor="@color/dark_gray"
             android:textFontWeight="500"
             android:textSize="18sp"
-            android:text="@{sheetRow.get(1)}"
+            android:text="@{symbole.rupee+sheetRow.get(1)}"
             android:layout_marginTop="3dp"
             app:layout_constraintTop_toBottomOf="@id/buyPriceTitle"
             app:layout_constraintStart_toStartOf="parent"
@@ -87,7 +96,7 @@
             android:id="@+id/cellPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{sheetRow.get(3)}"
+            android:text="@{symbole.rupee+sheetRow.get(3)}"
             android:fontFamily="@font/roboto_regular"
             android:textColor="@color/dark_gray"
             android:textFontWeight="500"
@@ -105,7 +114,7 @@
             android:fontFamily="@font/roboto_regular"
             android:textColor="@color/dark_gray"
             android:textFontWeight="500"
-            android:text="@{sheetRow.get(6)}"
+            android:text="@{symbole.rupee+sheetRow.get(6)}"
             android:textSize="18sp"
             android:layout_marginTop="3dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -191,7 +200,7 @@
             android:textColor="@color/dark_gray"
             android:textFontWeight="500"
             android:textSize="18sp"
-            android:text="@{sheetRow.get(5)}"
+            android:text="@{sheetRow.get(5)+symbole.month}"
             android:layout_marginTop="3dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/buyDateTitle"
@@ -220,7 +229,7 @@
             android:textColor="@color/dark_gray"
             android:textFontWeight="500"
             android:textSize="18sp"
-            android:text="@{sheetRow.get(7)}"
+            android:text="@{sheetRow.get(7)+symbole.percentage}"
             android:layout_marginTop="3dp"
             app:layout_constraintStart_toEndOf="@id/buyPriceTitle"
             app:layout_constraintEnd_toStartOf="@+id/netProfitLossTitle"

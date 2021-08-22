@@ -6,6 +6,8 @@ import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.ktx.messaging
 import com.mujaffar.lavtrade.R
 import com.mujaffar.lavtrade.admin_module.ui.AdminHomeActivity
 import com.mujaffar.lavtrade.admin_module.viewmodel.AdminHomeViewModel
@@ -103,6 +105,11 @@ fun createDialogue(context: Context,type:Int,databaseBuySellModel: DatabaseBuySe
         customDailogueViewBinding.confrimbutton.setText(context.getString(R.string.logout_button_text))
 
         customDailogueViewBinding.confrimbutton.setOnClickListener {
+
+            //unsubscribe admin message  topic to stop notification
+            Firebase.messaging.unsubscribeFromTopic("AdminMessage")
+
+
             UtilityFaction.doLogout(context)
             (context as Activity).finish()
            // finish()

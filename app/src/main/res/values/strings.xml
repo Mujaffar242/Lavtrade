@@ -37,4 +37,5 @@
     <string name="send">SEND</string>
     <string name="notifiation_sent_to_everyone">Notification sent to everyone.</string>
     <string name="enternoofshare">Please enter number of share</string>
+    <string name="summery">Summary</string>
 </resources>

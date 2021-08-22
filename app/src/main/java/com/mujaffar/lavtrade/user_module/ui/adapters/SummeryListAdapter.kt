@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.mujaffar.lavtrade.R
 import com.mujaffar.lavtrade.databinding.UserSummeryItemBinding
+import com.mujaffar.lavtrade.utils.Symbole
 
 
 /**
@@ -44,6 +45,7 @@ class SummeryListAdapter() :
     override fun onBindViewHolder(holder: SummeryViewHolder, position: Int) {
         holder.viewDataBinding.also {
             it.sheetRow=summeryList.get(position)
+            it.symbole= Symbole()
         }
 
         holder.bind()
