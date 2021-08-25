@@ -65,6 +65,7 @@
             android:textColor="#E6DBFB"
             android:fontFamily="@font/roboto_regular"
             android:textSize="14sp"
+            android:id="@+id/forgotPassword"
             android:textFontWeight="500"
             android:layout_marginTop="16dp"
             android:text="Forgot Password?" />

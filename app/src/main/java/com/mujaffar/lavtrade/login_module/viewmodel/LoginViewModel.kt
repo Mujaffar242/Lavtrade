@@ -1,7 +1,10 @@
 package com.mujaffar.lavtrade.login_module.viewmodel
 
 import android.app.Application
+import android.content.Intent
+import android.net.Uri
 import android.util.Log
+import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.*
 import com.mujaffar.currencyconverter.repository.LoginRepository
 import com.mujaffar.lavtrade.login_module.AuthListener
@@ -143,4 +146,6 @@ class LoginViewModel (application: Application): AndroidViewModel(application) {
     {
         showLoadingProgressBar.value=false;
     }
+
+
 }

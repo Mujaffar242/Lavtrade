@@ -32,19 +32,13 @@ class LoginRepository(context: Context) {
 
                 if(task.isSuccessful)
                 {
-                    task.result?.user?.getIdToken(true)
-                        ?.addOnCompleteListener(OnCompleteListener<GetTokenResult> { task ->
-                            if (task.isSuccessful) {
-                                val token = task.result!!.token
-                                Log.e("token2",token.toString())
-                                sharedPreferences.insertBooleanToSharedPrefrences(Appconstants.IS_LOGIN,task.isSuccessful)
-                                sharedPreferences.insertStringToSharedPrefrences(Appconstants.USERNAME,email.toString())
+                    sharedPreferences.insertBooleanToSharedPrefrences(Appconstants.IS_LOGIN,task.isSuccessful)
+                    sharedPreferences.insertStringToSharedPrefrences(Appconstants.USERNAME,email.toString())
 
-                                loginSuccess.value=true
-
-                                // 'token' is not a Google Access Token
-                            }
-                        })
+                    loginSuccess.value=true
+                }
+                else{
+                    loginSuccess.value=false
 
                 }
 

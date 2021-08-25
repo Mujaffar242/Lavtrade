@@ -5,16 +5,16 @@
     <application
         android:allowBackup="true"
         android:name="MainApplication"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_app_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/ic_app_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.LavTrade">
-        <activity android:name=".user_module.ui.activities.UserHomeActivity"></activity>
-        <activity android:name=".user_module.ui.activities.SummeryActivity" />
-        <activity android:name=".admin_module.ui.AdminHomeActivity" />
-        <activity android:name=".login_module.ui.activities.LoginActivity" />
-        <activity android:name=".SplashActivity">
+        <activity android:name=".user_module.ui.activities.UserHomeActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".user_module.ui.activities.SummeryActivity" android:screenOrientation="portrait" />
+        <activity android:name=".admin_module.ui.AdminHomeActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".login_module.ui.activities.LoginActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".SplashActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

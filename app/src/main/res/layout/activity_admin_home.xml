@@ -28,7 +28,7 @@
             android:layout_marginTop="32dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="@string/send_notification_users" />
+            android:text="@string/send_notification_users" />
 
         <EditText
             android:id="@+id/editTextShareName"
@@ -74,7 +74,7 @@
             android:layout_marginTop="16dp"
             android:text="@string/send_notification"
             app:layout_constraintTop_toBottomOf="@+id/buysellAutoComplete"
-            android:background="@drawable/ic_send_noti_btn_ng"
+            android:background="@drawable/ic_button_bg"
             android:fontFamily="@font/roboto_regular"
             android:textFontWeight="500"
             android:id="@+id/sendNotificationButton"

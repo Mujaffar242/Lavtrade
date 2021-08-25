@@ -2,6 +2,7 @@ package com.mujaffar.lavtrade.user_module.ui.activities
 
 import android.app.ProgressDialog
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
@@ -177,11 +178,20 @@ class UserHomeActivity : AppCompatActivity(), BuySellClickListner {
         return if (id == R.id.logout) {
             createDialogue(this,Appconstants.DialogueType.LOG_OUT,null)
             true
-        } else super.onOptionsItemSelected(item)
+        }else if(id == R.id.call) {
+            openDailerWithNumber()
+            true
+        }
+            else super.onOptionsItemSelected(item)
     }
 
 
 
+    fun openDailerWithNumber(){
+        val intent = Intent(Intent.ACTION_DIAL)
+        intent.data = Uri.parse("tel:+91 95165 92571")
+        startActivity(intent)
+    }
 
 
 }

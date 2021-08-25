@@ -48,15 +48,14 @@ fun ConstraintLayout.setbackground(data:DatabaseBuySellModel)
 }
 
 
-/*
-@BindingAdapter("setTextWithAmount")
-fun TextView.setTextWithAmount(amount:String)
+@BindingAdapter("setBackgroundForSummery")
+fun ConstraintLayout.setBackgroundForSummery(type:String)
 {
-    setText("₹ "+amount)
+    if(type.equals("Overall Summary"))
+    {
+        setBackgroundResource(R.drawable.overallsummerybg)
+    }
+    else{
+        setBackgroundResource(R.drawable.summerybg)
+    }
 }
-
-@BindingAdapter("setTextWithMonths")
-fun TextView.setTextWithAmount(amount:String)
-{
-    setText("₹ "+amount)
-}*/

@@ -31,6 +31,9 @@ class AdminHomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
+        setTitle("LavTrade Admin")
+
         //init binding object
         adminHomeBinding=DataBindingUtil.setContentView(this,R.layout.activity_admin_home)
 

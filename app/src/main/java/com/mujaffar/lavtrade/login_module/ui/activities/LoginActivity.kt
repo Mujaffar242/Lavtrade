@@ -2,9 +2,11 @@ package com.mujaffar.lavtrade.login_module.ui.activities
 
 import android.app.ProgressDialog
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -35,6 +37,11 @@ class LoginActivity : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
 
+
+        binding.forgotPassword.setOnClickListener {
+            openDailerWithNumber()
+        }
+
         loginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
 
         binding.loginViewModel = loginViewModel
@@ -58,7 +65,7 @@ class LoginActivity : AppCompatActivity() {
 
         loginViewModel.showValiationToast.observe(this, Observer {
             if (it)
-                Toast.makeText(this, "Enter user name and password", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Incorrect Username or Password", Toast.LENGTH_LONG).show()
         })
 
 
@@ -133,4 +140,10 @@ class LoginActivity : AppCompatActivity() {
         loginViewModel.resetRedirectToHome()
     }
 
+
+    fun openDailerWithNumber(){
+        val intent = Intent(Intent.ACTION_DIAL)
+        intent.data = Uri.parse("tel:+91 95165 92571")
+        startActivity(intent)
+    }
 }

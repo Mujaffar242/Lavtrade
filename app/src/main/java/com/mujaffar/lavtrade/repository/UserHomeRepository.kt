@@ -85,7 +85,7 @@ class UserHomeRepository(val database: BuySellDatabase) {
 
             arraylist.add(buysellarry)
 
-           val sheetPostModel= SheetPostModel("Sheet1!A:E","ROWS",arraylist)
+           val sheetPostModel= SheetPostModel("activities!A:E","ROWS",arraylist)
 
 
 
@@ -103,7 +103,7 @@ class UserHomeRepository(val database: BuySellDatabase) {
                 sharedPreferences.insertStringToSharedPrefrences(Appconstants.AUTHTOKEN,accessToken)
 
 
-                GoogleSheetApi.retrofitService.postDataTOGoogleSheet("1IVJPVZW3XWtTOEJWFE5pDs-AoxcFvHikbIgOatYMGz4","Sheet1","A:E","USER_ENTERED",sheetPostModel).await()
+                GoogleSheetApi.retrofitService.postDataTOGoogleSheet("1IVJPVZW3XWtTOEJWFE5pDs-AoxcFvHikbIgOatYMGz4","activities","A:E","USER_ENTERED",sheetPostModel).await()
 
                 //mark this share action complete on local database
                 databaseBuySellModel.isByOrSell=true
