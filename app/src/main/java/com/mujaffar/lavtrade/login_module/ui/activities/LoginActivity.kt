@@ -17,6 +17,8 @@ import com.mujaffar.lavtrade.login_module.viewmodel.LoginViewModel
 import com.mujaffar.lavtrade.user_module.ui.activities.UserHomeActivity
 import com.mujaffar.lavtrade.utils.Appconstants
 import com.mujaffar.lavtrade.utils.SharedPrefHelper
+import com.mujaffar.lavtrade.utils.UtilityFaction
+import com.mujaffar.lavtrade.utils.createDialogue
 
 class LoginActivity : AppCompatActivity() {
 
@@ -32,6 +34,11 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
+        if(!UtilityFaction.isInternetAvalible(this))
+        {
+            createDialogue(this,Appconstants.DialogueType.NO_INTERNET,null)
+        }
 
         val sharedPrefHelper: SharedPrefHelper = SharedPrefHelper(this)
 
@@ -50,6 +57,7 @@ class LoginActivity : AppCompatActivity() {
 
         //init progress dialog
         progressDialog = ProgressDialog(this)
+        progressDialog.setCancelable(false)
 
         //get email for shared prefrences
         if (!sharedPrefHelper.getStringValueFromSharedPrefrences(Appconstants.USERNAME)
@@ -88,7 +96,7 @@ class LoginActivity : AppCompatActivity() {
                 loginViewModel.makeRedirectHome()
             } else {
                 Toast.makeText(
-                    baseContext, "Authentication failed.",
+                    baseContext, "Incorrect Username or Password",
                     Toast.LENGTH_SHORT
                 ).show()
             }

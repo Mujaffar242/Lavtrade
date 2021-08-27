@@ -3,15 +3,18 @@ package com.mujaffar.lavtrade.utils
 import android.app.Activity
 import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat.startActivity
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.messaging.ktx.messaging
 import com.mujaffar.lavtrade.R
 import com.mujaffar.lavtrade.admin_module.ui.AdminHomeActivity
 import com.mujaffar.lavtrade.admin_module.viewmodel.AdminHomeViewModel
 import com.mujaffar.lavtrade.databinding.CustomDailogueViewBinding
+import com.mujaffar.lavtrade.login_module.ui.activities.LoginActivity
 import com.mujaffar.lavtrade.user_module.ui.activities.UserHomeActivity
 import com.mujaffar.medremind.database.DatabaseBuySellModel
 
@@ -143,6 +146,25 @@ fun createDialogue(context: Context,type:Int,databaseBuySellModel: DatabaseBuySe
         customDailogueViewBinding.cancelButton.visibility=View.GONE
 
         customDailogueViewBinding.confrimbutton.setOnClickListener {
+            alertDialog.dismiss()
+        }
+    }
+    else if(type==Appconstants.DialogueType.NO_INTERNET)
+    {
+        customDailogueViewBinding.title.setText(context.getString(R.string.no_internet_title))
+        customDailogueViewBinding.editTextNumberOfShare.visibility=View.GONE
+        customDailogueViewBinding.subTitle.setText(context.getString(R.string.no_internet_subtitle))
+        customDailogueViewBinding.confrimbutton.setText(context.getString(R.string.try_again))
+        customDailogueViewBinding.cancelButton.visibility=View.GONE
+        customDailogueViewBinding.checkedIcon.visibility=View.GONE
+
+
+        customDailogueViewBinding.confrimbutton.setOnClickListener {
+
+            val intent = Intent(context, (context as Activity)::class.java)
+            context.startActivity(intent)
+            (context as Activity).finish()
+
             alertDialog.dismiss()
         }
     }

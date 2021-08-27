@@ -18,6 +18,7 @@ import com.mujaffar.lavtrade.databinding.ActivityUserHomeBinding
 import com.mujaffar.lavtrade.user_module.BuySellClickListner
 import com.mujaffar.lavtrade.user_module.viewmodel.UserHomeviewModel
 import com.mujaffar.lavtrade.utils.Appconstants
+import com.mujaffar.lavtrade.utils.UtilityFaction
 import com.mujaffar.lavtrade.utils.createDialogue
 import com.mujaffar.medremind.database.DatabaseBuySellModel
 
@@ -46,9 +47,14 @@ class UserHomeActivity : AppCompatActivity(), BuySellClickListner {
 
         //init progress dialog
         progressDialog = ProgressDialog(this)
+        progressDialog.setCancelable(false)
 
 
 
+        if(!UtilityFaction.isInternetAvalible(this))
+        {
+            createDialogue(this,Appconstants.DialogueType.NO_INTERNET,null)
+        }
 
 
 

@@ -29,6 +29,7 @@ class Appconstants {
             val LOG_OUT=5
             val SEND_NOTIFICATION=6
             val CONFRIM_NOTIFICATION=7
+            val NO_INTERNET=8
         }
     }
 }

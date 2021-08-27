@@ -38,4 +38,7 @@
     <string name="notifiation_sent_to_everyone">Notification sent to everyone.</string>
     <string name="enternoofshare">Please enter number of share</string>
     <string name="summery">Summary</string>
+    <string name="no_internet_title">No Internet Connection</string>
+    <string name="no_internet_subtitle">Please make sure you’re connected to internet.</string>
+    <string name="try_again">TRY AGAIN</string>
 </resources>

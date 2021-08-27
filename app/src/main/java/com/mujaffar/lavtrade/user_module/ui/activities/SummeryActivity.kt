@@ -43,6 +43,7 @@ class SummeryActivity : AppCompatActivity() {
 
         //init progress dialog
         progressDialog = ProgressDialog(this)
+        progressDialog.setCancelable(false)
 
 
         //init binding

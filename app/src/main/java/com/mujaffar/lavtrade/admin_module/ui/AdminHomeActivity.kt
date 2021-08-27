@@ -32,6 +32,11 @@ class AdminHomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
 
+        if(!UtilityFaction.isInternetAvalible(this))
+        {
+            createDialogue(this,Appconstants.DialogueType.NO_INTERNET,null)
+        }
+
         setTitle("LavTrade Admin")
 
         //init binding object
