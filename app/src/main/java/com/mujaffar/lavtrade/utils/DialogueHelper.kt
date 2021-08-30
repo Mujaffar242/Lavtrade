@@ -158,6 +158,7 @@ fun createDialogue(context: Context,type:Int,databaseBuySellModel: DatabaseBuySe
         customDailogueViewBinding.cancelButton.visibility=View.GONE
         customDailogueViewBinding.checkedIcon.visibility=View.GONE
 
+        alertDialog.setCancelable(false)
 
         customDailogueViewBinding.confrimbutton.setOnClickListener {
 
