@@ -12,8 +12,8 @@ import androidx.room.*
 @Dao
 interface BuySellDao {
 
-    @Query("select * from DatabaseBuySellModel")
-    fun getAllBuySellListForDay():LiveData<List<DatabaseBuySellModel>>
+    @Query("select * from DatabaseBuySellModel where date= :date")
+    fun getAllBuySellListForDay(date:String):LiveData<List<DatabaseBuySellModel>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     // fun insertAll(vararg task: DatabaseTaskModel)
@@ -25,6 +25,9 @@ interface BuySellDao {
 
     @Query("SELECT * FROM DatabaseBuySellModel WHERE id = :id")
     fun getSingleValue(id:String):DatabaseBuySellModel
+
+    @Query("DELETE FROM DatabaseBuySellModel WHERE date != :date")
+    fun delete(date:String)
 
     /*
    *for update database model single row

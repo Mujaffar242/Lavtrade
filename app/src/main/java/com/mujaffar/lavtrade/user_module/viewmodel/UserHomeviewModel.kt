@@ -26,6 +26,11 @@ class UserHomeviewModel(application: Application) : AndroidViewModel(application
     //for show loading spinner
     var showLoadingProgressBar=MutableLiveData<Boolean>()
 
+    //for show confirmDailoge
+    var showConfrimDialouge=userHomeRepository.showConfirmDialouge
+
+
+
     /*
     * get list of contacts and save into room databse when app load first time
     * */

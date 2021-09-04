@@ -1,5 +1,6 @@
 package com.mujaffar.lavtrade
 
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -57,5 +58,19 @@ fun ConstraintLayout.setBackgroundForSummery(type:String)
     }
     else{
         setBackgroundResource(R.drawable.summerybg)
+    }
+}
+
+
+@BindingAdapter("setOpicity")
+fun View.setOpicity(data:DatabaseBuySellModel)
+{
+    if(data.isByOrSell)
+    {
+        background.alpha=178
+
+    }
+    else{
+        background.alpha=255
     }
 }

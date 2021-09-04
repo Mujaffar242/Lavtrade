@@ -33,7 +33,7 @@ class UserHomeRepository(val database: BuySellDatabase) {
     /*
 * get list of all buy sell that are store in database
 *  */
-    val allBuySellForToday: LiveData<List<DatabaseBuySellModel>> = database.buySellDao.getAllBuySellListForDay()
+    val allBuySellForToday: LiveData<List<DatabaseBuySellModel>> = database.buySellDao.getAllBuySellListForDay(UtilityFaction.getCurrentDateString())
 
 
     /*
@@ -41,6 +41,11 @@ class UserHomeRepository(val database: BuySellDatabase) {
     * */
     var googleSheetDataResponceModel=MutableLiveData<SheetDataResponceModel>()
 
+
+    /*
+    * live data model for show confirm dailoge
+    * */
+    var showConfirmDialouge=MutableLiveData<Int>()
 
 
     /*
@@ -111,15 +116,18 @@ class UserHomeRepository(val database: BuySellDatabase) {
 
                 (context as UserHomeActivity).viewModel.hideLoadingSpinner()
 
+               // (context as UserHomeActivity).viewModelAdapter?.notifyDataSetChanged()
 
                 //show the confrim dailoge based on command type
                 if(databaseBuySellModel.command.equals("Buy"))
                 {
-                    createDialogue(context, Appconstants.DialogueType.BUY_CONFIRM,null)
+                  //  createDialogue(context, Appconstants.DialogueType.BUY_CONFIRM,null)
+                    showConfirmDialouge.postValue(Appconstants.DialogueType.BUY_CONFIRM)
 
                 }
                 else{
-                    createDialogue(context, Appconstants.DialogueType.SELL_CONFIRM,null)
+                   // createDialogue(context, Appconstants.DialogueType.SELL_CONFIRM,null)
+                    showConfirmDialouge.postValue(Appconstants.DialogueType.SELL_CONFIRM)
 
                 }
 

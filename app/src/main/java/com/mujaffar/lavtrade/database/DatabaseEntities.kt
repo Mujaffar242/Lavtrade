@@ -15,7 +15,7 @@ import kotlin.collections.ArrayList
 * */
 @Entity
 data class DatabaseBuySellModel constructor(
-     val shareName:String, val command:String,var isByOrSell:Boolean
+     val shareName:String, val command:String,var isByOrSell:Boolean,var date:String
 )
 {
     @PrimaryKey(autoGenerate = true)

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -32,7 +33,7 @@ class UserHomeActivity : AppCompatActivity(), BuySellClickListner {
     /**
      * RecyclerView Adapter
      */
-    private var viewModelAdapter: BuySellListAdapter? = null
+     var viewModelAdapter: BuySellListAdapter? = null
 
     //for hold currency viewmodel
     lateinit var viewModel: UserHomeviewModel
@@ -128,6 +129,13 @@ class UserHomeActivity : AppCompatActivity(), BuySellClickListner {
             }
         })
 
+
+        viewModel.showConfrimDialouge.observe(this, Observer {
+            createDialogue(this, it,null)
+            viewModelAdapter?.notifyDataSetChanged()
+
+        })
+
     }
 
 
@@ -147,9 +155,13 @@ class UserHomeActivity : AppCompatActivity(), BuySellClickListner {
     * */
     override fun onBuySellClick(databaseBuySellModel: DatabaseBuySellModel) {
 
+
         //if already buy or sell simplely return
         if (databaseBuySellModel.isByOrSell)
+        {
+            Toast.makeText(this,"You have already responded to this notification",Toast.LENGTH_LONG).show()
             return
+        }
 
         //show dailoge based on command type
         if(databaseBuySellModel.command.equals("Buy"))

@@ -11,6 +11,7 @@ import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.mujaffar.lavtrade.R
 import com.mujaffar.lavtrade.user_module.ui.activities.UserHomeActivity
+import com.mujaffar.lavtrade.utils.UtilityFaction
 import com.mujaffar.medremind.database.DatabaseBuySellModel
 import com.mujaffar.medremind.database.getDatabase
 import kotlinx.coroutines.Dispatchers
@@ -79,7 +80,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             DatabaseBuySellModel(
                 remoteMessage.data.get("body").toString(),
                 remoteMessage.data.get("title").toString(),
-                false
+                false,
+                UtilityFaction.getCurrentDateString()
             )
         )
 
@@ -88,6 +90,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
     fun insertSingleValue(databaseBuySellModel: DatabaseBuySellModel) {
         val database = getDatabase(application)
+
+        database.buySellDao.delete(UtilityFaction.getCurrentDateString())
 
         database.buySellDao.insertSinglevalue(databaseBuySellModel)
 
