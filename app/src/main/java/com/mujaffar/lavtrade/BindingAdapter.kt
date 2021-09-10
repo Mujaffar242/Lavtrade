@@ -67,10 +67,16 @@ fun View.setOpicity(data:DatabaseBuySellModel)
 {
     if(data.isByOrSell)
     {
-        background.alpha=178
+        if(this is TextView)
+        alpha=.5F
+        else
+        background.alpha=123
 
     }
     else{
+        if(this is TextView)
+            alpha=1F
+        else
         background.alpha=255
     }
 }
